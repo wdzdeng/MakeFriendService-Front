@@ -325,5 +325,6 @@ App({
     userInfo: null,
     rankList:{},   // 排行榜
     otherIndex:0,    //排行榜第几个人的索引
+    otherInfo:{}
   }
 })

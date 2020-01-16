@@ -1,5 +1,6 @@
 // pages/rankList/index.js
 const checkRankList = require('../../config').checkRankList;
+const getOtherInfoUrl = require('../../config').getOtherInfoUrl;
 
 const app = getApp();
 
@@ -80,13 +81,45 @@ Page({
       loading: true,
     },
     goOtherInfo:function(e){
-      console.log(e)
-      console.log(e.currentTarget.dataset.index)
+      // console.log(e)
+      // console.log(e.currentTarget.dataset.index)
 
-      app.globalData.otherIndex=e.currentTarget.dataset.index
-      wx.navigateTo({
-        url:'../otherInfo/otherInfo'
+      app.globalData.otherIndex=e.currentTarget.dataset.index  //存起来为了获取头像
+
+      var otherIndex=e.currentTarget.dataset.index  //点击的这个人在排行榜中的索引
+      wx.request({
+        url:getOtherInfoUrl,
+        method:"GET",
+        data:{
+          otherUserId:app.globalData.rankList[otherIndex].userId,
+          match:app.globalData.rankList[otherIndex].match
+        },
+        success:function(res){
+          if(!res.data.code){
+            app.globalData.otherInfo = res.data.data
+            wx.navigateTo({
+              url:'../otherInfo/otherInfo'
+            })
+          }else{
+            wx.showModal({
+              title: "不能看Ta呦~",
+              content: res.data.msg,
+              showCancel:true,
+              success (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                }
+              }
+            })
+          }
+        },
+        fail:function(){
+          console.log("请求后台失败：",res)
+        }
       })
+
+
+      
       
     },
 

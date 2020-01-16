@@ -40,8 +40,8 @@ Page({
         expectGender:null,
         expectCapYear:null,
         expectLowerYear:null,
-        matchArray:['0','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'],
-        matchIndex:null,
+        matchArray:['0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'],
+        matchIndex:0,
         expectMatch:null,
         submitPerInfoFlag:false     //上传信息成功过与否
     },
