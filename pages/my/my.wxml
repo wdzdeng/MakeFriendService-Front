@@ -147,7 +147,11 @@
 
              <view class="tab-item" hover-class="tab-item-hover">
                 <text class="tab-text">期待的匹配度下限</text>
-                <input name='input' class="tab-info" type="text" value="{{expectMatch}}" bindblur="bindExpectMatch"/>
+                <!-- <input name='input' class="tab-info" type="text" value="{{expectMatch}}" bindblur="bindExpectMatch"/> -->
+                <picker name="picker" mode="selector" bindchange="bindExpectMatch" value="{{matchIndex}}" range="{{matchArray}}">
+                    <view class="tab-info">{{matchArray[matchIndex]}}</view>
+                </picker>
+                <view class="tab-arrow"></view>
             </view>
 
             

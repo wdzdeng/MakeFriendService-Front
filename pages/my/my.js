@@ -40,6 +40,8 @@ Page({
         expectGender:null,
         expectCapYear:null,
         expectLowerYear:null,
+        matchArray:['0','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'],
+        matchIndex:null,
         expectMatch:null,
         submitPerInfoFlag:false     //上传信息成功过与否
     },
@@ -237,11 +239,20 @@ Page({
         console.log(this.data.lowerAge)
         console.log(this.data.lowerIndex)
     },
-    bindExpectMatch:function(){
+    bindExpectMatch:function(e){
+        console.log(e)
+        var matchindex =e.detail.value
         this.setData({
-            expectMatch:e.detail.value
+            matchIndex:matchindex,
+            expectMatch:matchindex+'0'
         })
+        console.log(this.data.expectMatch)
     },
+    // bindExpectMatch:function(){
+    //     this.setData({
+    //         expectMatch:e.detail.value
+    //     })
+    // },
 
     submit:function(){
         let that = this
