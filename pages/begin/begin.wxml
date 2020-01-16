@@ -1,0 +1,50 @@
+<!--pages/begin/begin.wxml-->
+<view class="main">
+
+    <!-- 标题部分 -->
+    <!-- <view class="title css-shadow"> -->
+        <!-- 如果标签文字背后换行再写会有空行的 -->
+            <!-- <text class="" selectable="false" space="false" decode="false">小程序分为答题模式和查看排名两种，收录多选题、单选题、判断题等，其中多选题3分，单选题或判断题2分。
+        </text>
+    </view> -->
+
+    <!-- <view class="userinfo">
+        <block wx:if="{{!hasLogin}}">
+            <image class="userinfo-avatar" src="../../images/login.png" background-size="cover" catchtap="doLogin"></image>
+            <text class="userinfo-nickname">点击登录</text>
+        </block>
+        
+        <block wx:else>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view> -->
+
+    <!-- 选择部分 -->
+    <view class="info ">
+        <navigator class="practice_wrap" url='../play/play'>
+            <view class="practice ">
+                <text>
+                    答题模式
+                </text>
+            </view>
+        </navigator>
+
+        <navigator class="test_wrap" url='../setPerInfo/setArea/setArea'>
+            <view class="test">
+                <text>
+                    查看排名
+                </text>
+            </view>
+        </navigator>
+
+
+        <navigator class="test_wrap" url='../newContent/newContent'>
+        <view class="test">
+            <text>
+                测试内容
+            </text>
+        </view>
+    </navigator>
+    </view> 
+</view>

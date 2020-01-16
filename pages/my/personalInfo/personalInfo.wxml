@@ -1,0 +1,114 @@
+<view class="tab-container bg-gray" >
+
+        <view class="tab-items bg-white">
+            <view class="tab-item  border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position tab-item-height ">
+                    <text class="tab-text">头像</text>
+                    <image class="tab-info tab-info-photo" wx:if="{{userInfo}}" src="{{userInfo.headUrl}}" mode="aspectFit"  catchtap="previewImage"></image>
+                    <view class="tab-arrow tab-arrow-photo"></view>
+                </view>
+            </view>
+            
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="goSetName">
+                <view class="tab-item-position" hover-class="none">
+                    <text class="tab-text">昵称</text>
+                    <text class="tab-info" >{{userInfo.nickName}}</text>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+               <view class="tab-item-position" >
+                    <text class="tab-text">性别</text>
+                    <!-- <text class="tab-info">{{gender}}</text> -->
+                    <picker mode="selector" bindchange="bindGenderChange" value="{{index}}" range="{{array}}">
+                        <view class="tab-info">{{array[index]}}</view>
+                    </picker>
+                    <!-- <open-data class="tab-info" type="userGender" lang="zh_CN">{{userInfo.gender}}</open-data> -->
+                    <!-- <text class="tab-info" wx:if="{{userInfo.gender==1}}">男</text>
+                    <text class="tab-info" wx:else-if="{{userInfo.gender==2}}">女</text>
+                    <text class="tab-info" wx:else>其他</text> -->
+                    <view class="tab-arrow"></view>
+               </view>
+            </view>
+
+             <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="binDataChange">
+                <view class="tab-item-position">
+                    <text class="tab-text">出生年月</text>
+                    <picker class="picker" mode="date" bindchange="binDataChange" value="{{data}}" start="1960-01-01" end="2020-01-01">
+                        <text class="tab-info">{{data}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="tab-text">地区</text>
+                    <!-- <text class="tab-info" >{{userInfo.province+" "+userInfo.city}}</text> -->
+                    <!-- <text class="tab-info" >{{region[0]+" "+region[1]}}</text> -->
+                    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]+" "+region[2]}}</text>
+                         <text class="tab-info" wx:else>{{region[0]+" "+region[1]}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="goPhotoAlbum">
+                <view class="tab-item-position">
+                    <text class="tab-text">微信号</text>
+                    <text class="tab-info" ></text>
+                </view>
+                <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="goPhotoAlbum">
+                <view class="tab-item-position">
+                    <text class="tab-text">QQ</text>
+                    <text class="tab-info" ></text>
+                </view>
+                <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="goSetsignature">
+                <view class="tab-item-position" hover-class="none">
+                    <text class="tab-text">个性签名</text>
+                    <text class="tab-info" >{{signature}}</text>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+           
+           <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="tab-text">期望对方所在省市</text>
+                    <!-- <text class="tab-info" >{{userInfo.province+" "+userInfo.city}}</text> -->
+                    <!-- <text class="tab-info" >{{region[0]+" "+region[1]}}</text> -->
+                    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]+" "+region[2]}}</text>
+                         <text class="tab-info" wx:else>{{region[0]+" "+region[1]}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+               <view class="tab-item-position" >
+                    <text class="tab-text">期望对方性别</text>
+                    <!-- <text class="tab-info">{{gender}}</text> -->
+                    <picker mode="selector" bindchange="bindGenderChange" value="{{index}}" range="{{array}}">
+                        <view class="tab-info">{{array[index]}}</view>
+                    </picker>
+                    <!-- <open-data class="tab-info" type="userGender" lang="zh_CN">{{userInfo.gender}}</open-data> -->
+                    <!-- <text class="tab-info" wx:if="{{userInfo.gender==1}}">男</text>
+                    <text class="tab-info" wx:else-if="{{userInfo.gender==2}}">女</text>
+                    <text class="tab-info" wx:else>其他</text> -->
+                    <view class="tab-arrow"></view>
+               </view>
+            </view>
+        </view>
+                
+    </view>

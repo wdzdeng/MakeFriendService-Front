@@ -1,0 +1,6 @@
+<view 
+    style="background-color:#ccc; width:30px; height:20px;color:#fff;"
+     class="btn" 
+     bindtap="handle">
+    up
+</view>

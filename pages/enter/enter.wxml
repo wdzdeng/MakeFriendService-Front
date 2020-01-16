@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="../../images/loading.gif"></image>
+  </view> -->
+
+  <!-- <block wx:else> -->
+    <view class="title" >
+      <text class="CN">懂 我</text>
+      <text class="EN">Read My Mind</text>
+    </view>
+    <view class="content">
+
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src="{{weixinInfo.headUrl}}"></image>
+        <!-- <view class="logo"></view> -->
+        <image class="wave" src="../../images/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="../../images/wave.png" mode="aspectFill"></image>
+      </view>
+      
+      <view class="bd">
+          <!-- <image class="smalltitle" src="../../images/confirm-word1.png"></image> -->
+        <!-- <view>
+            <button class="confirm-btn"  open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="bindGetUserInfo" wx:if="{{!userInfo.avatarUrl}}">点击授权</button>
+            <view class="confirm-btn" bindtap='goSign' wx:else>
+                <text >点击进入</text>
+            </view>
+        </view> -->
+        <view class="relative">
+            <button class="confirm-btn"  open-type="getUserInfo" lang='zh_CN' bindgetuserinfo="bindGetUserInfo" wx:if="{{isHide}}">点击授权</button>
+            <view wx:else>
+              <view class="confirm-btn " catchtap='goAnswer' >
+                <text >点击答题</text>
+              </view>
+              <!-- <view class="confirm-btn btn2" bindtap='goMyInfo'>
+                <text >进入我的</text>
+              </view> -->
+            </view>
+        </view>
+
+        
+        <!-- <text class="copyright">© 2019 12.25 倾情出品 </text> -->
+      </view>
+
+    </view>
+  <!-- </block> -->
+</view>

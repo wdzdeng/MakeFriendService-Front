@@ -1,0 +1,11 @@
+<view class="bg-gray">
+    <view>
+        <input 
+            class="name_input" 
+            type="text" 
+            value="{{nickName}}" 
+            focus="true"
+            bindblur="bindChange"
+        />
+    </view>
+</view>

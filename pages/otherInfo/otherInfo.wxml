@@ -1,0 +1,171 @@
+<!--index.wxml-->
+<view class="bg-gray">
+    <view class="user-container bg-white">
+    
+        <view class="userinfo">
+            <view class="page-hd-border" >
+                <view class="page-hd__pic" >
+                    <image src="{{rankOtherInfo.headUrl}}"/>
+                </view>
+            </view> 
+            <view class="page-hd__name">{{rankOtherInfo.name}}</view>
+                <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image> -->
+                <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+                <!-- <open-data class="userinfo-avatar" wx:if='{{isLogin}}' type="userAvatarUrl" style="border-radius:100%"></open-data>
+                <open-data class="userinfo-nickname" wx:if='{{isLogin}}' type="userNickName"></open-data> -->
+        </view>
+
+    </view>
+
+    <view class="tab-container">
+
+        <view class="tab-items bg-white">
+            <view class="tab-title border-bottom" style="height:80rpx;" hover-class="tab-item-hover">
+                <image src="../../images/luckyCoin.png" mode="aspectFit" class="tab-icon"></image>
+                <text class="tab-text baseInfo" >ta的基本信息</text>
+            </view>
+
+           
+
+            <!-- <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text">昵称</text>
+                    <input name='input' class="tab-info" type="text"  value="{{otherInfo.name}}" bindblur="bindNameChange"/>
+            </view> -->
+            
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <!-- <text class="required">*</text> -->
+                <text class="tab-text">性别</text>
+                <text class="tab-info" wx:if="{{otherInfo.gender==1}}">男</text>
+                <text class="tab-info" wx:elif="{{otherInfo.gender==2}}">女</text>
+                <!-- <text class="tab-info" wx:else>其他</text> -->
+            </view>
+
+             <view class="tab-item border-bottom" hover-class="tab-item-hover" >
+                <!-- <text class="required">*</text> -->
+                <text class="tab-text">出生年月</text>
+                <text class="tab-info">{{otherInfo.birthday}}</text>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <!-- <text class="required">*</text> -->
+                <text class="tab-text">地区</text>
+                <text class="tab-info" >{{otherInfo.province+" "+otherInfo.city}}</text>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> 微信号</text>
+                <text class="tab-info" wx:if="{{otherInfo.weichat}}">{{otherInfo.weichat}}</text>
+                <text class="tab-info" wx:else></text>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> QQ</text>
+                <text class="tab-info" wx:if="{{otherInfo.qq}}">{{otherInfo.qq}}</text>
+                <text class="tab-info" wx:else></text>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" style="height:auto">
+                <text class="tab-text"> 个性签名</text>
+                <text class="tab-info" wx:if="{{otherInfo.signature}}">{{otherInfo.signature}}</text>
+                <text class="tab-info" wx:else></text>
+            </view>
+           
+           <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> 期望对方所在省市</text>
+                <text class="tab-info" wx:if="{{otherInfo.expectProvince}}">{{otherInfo.expectProvince+" "+otherInfo.expectCity}}</text>
+                <text class="tab-info" wx:else></text>
+                
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> 期望对方性别</text>
+                <text class="tab-info" wx:if="{{otherInfo.expectGender==1}}">男</text>
+                <text class="tab-info" wx:elif="{{otherInfo.expectGender==2}}">女</text>
+                <text class="tab-info" wx:elif="{{!otherInfo.expectGender}}"></text>
+                <!-- <text class="tab-info" wx:else>其他</text> -->
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> 期望对方年龄上限</text>
+                <view class="tab-info" wx:if="{{otherInfo.expectCapYear}}">{{otherInfo.expectCapYear}}</view>
+                <view class="tab-info" wx:else></view>
+            </view>
+
+            <view class="tab-item  border-bottom" hover-class="tab-item-hover">
+                <text class="tab-text"> 期望对方年龄下限</text>
+                <view class="tab-info" wx:if="{{otherInfo.weichat}}">{{otherInfo.expectLowerYear}}</view>
+                <view class="tab-info" wx:else></view>
+            </view>
+
+             <!-- <view class="tab-item" hover-class="tab-item-hover">
+                <text class="tab-text">期待的匹配度下限</text>
+                <view class="tab-info" wx:if="{{otherInfo.expectMatchRate}}">{{otherInfo.expectMatchRate}}</view>
+                <view class="tab-info" wx:else></view>
+            </view> -->
+
+            
+        </view>
+                
+    </view>
+
+
+    <view class="answer-body" hover-class="none" hover-stop-propagation="false">
+      <!-- 标题 -->
+      <view class="tab-title border-bottom" style="height:80rpx; line-height:80rpx; background-color:#fff;" hover-class="tab-item-hover">
+        <image src="../../images/luckyCoin.png" mode="aspectFit" class="tab-icon"></image>
+        <text class="tab-text baseInfo" >答题详情</text>
+      </view>
+
+      <!-- 题目 -->
+      <view class="question_list" hover-class="none" hover-stop-propagation="false">
+        <view class="question_list_title">
+            <!-- <text class="question_style" name="题型" > {{current+1}}.{{questionList[current].type}} </text> -->
+            <!-- <text class="question_style" name="题型" >单选</text> -->
+            <text class="question_name">{{questionList[current].question}}</text>
+        </view>
+      </view>
+      <!-- 选项 -->
+      <view class="question_list_body">
+        <!-- 四个选项 携带参数变量会自动小写-->
+        <view class="question_item question_item1" data-selectId="1"  >
+            <text class="question_item_name">{{questionList[current].item1}}</text>
+            <!-- <radio class="question_select" checked="{{myChecked===1?true:false}}"> </radio> -->
+        </view>
+        <!-- 选项2 -->
+        <view class="question_item question_item2 " data-selectId="2">
+            <text class="question_item_name">{{questionList[current].item2}}</text>
+            <!-- <radio class="question_select"  checked="{{myChecked===2?true:false}}"> </radio> -->
+        </view>
+        <!-- 选项3 -->
+        <view class="question_item question_item3" data-selectId="3">
+            <text class="question_item_name">{{questionList[current].item3}}</text>
+            <!-- <radio class="question_select"  checked="{{myChecked===3?true:false}}" > </radio> -->
+        </view>
+        <!-- 选项4 -->
+        <view class="question_item question_item2" data-selectId="4">
+            <text class="question_item_name" >{{questionList[current].item4}}</text>
+            <!-- <radio class="question_select"  checked="{{myChecked===4?true:false}}"> </radio> -->
+        </view>
+        <!-- 两个人的答题结果 -->
+      </view>  
+
+      <view class=" analysis">
+        <text >
+            我的答案: {{trueAnswerList[current*2]}}
+            Ta的答案: {{trueAnswerList[current*2+1]}}
+        </text>
+      </view>
+
+      <!-- 下一题 -->
+      <view class="select_button" >
+        <view wx:if="{{current!==0}}" class="pre" bindtap='pre_question'>
+            <text class="pre_detail">上一题</text>
+        </view>
+        <view wx:if="{{current!==(qusLength-1)}}" class="next" bindtap='next_question'>
+            <text class="next_detail">下一题</text>
+        </view>
+      </view>
+    </view>
+    
+
+</view>

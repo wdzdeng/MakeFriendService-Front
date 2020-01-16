@@ -1,0 +1,167 @@
+/* pages/play/play.wxss */
+/* 题号部分 */
+page{
+    height: 100%;
+}
+.main{
+    /* padding: 20rpx; */
+    background: #f1f1f1;
+    min-height: 100%;
+    /* background-color: ; */
+    
+}
+/* 得分栏部分 */
+.score_info{
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx;
+    width: 100%;
+    font-family: '黑体';
+    background: #fff;
+    
+}
+.score_info .score{
+    width: 40%;
+   
+    /* background: skyblue; */
+}
+.home_{
+    height: 18px;
+    width:18px;
+    text-align: right;
+}
+.home{
+    height: 100%;
+    /* background-color:#000; */
+
+    /* background-color:#000; */
+}
+.score_info .time{
+    width: 40%;
+    /* background: skyblue; */
+    /* right: 500rpx; */
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 48rpx;
+    margin-top: 100rpx;
+    
+}
+.title text{
+  width: 300rpx;
+ background: white;
+ text-align: center;
+ border-radius: 10rpx;
+}
+/* 问题部分 */
+.question_item{
+    padding:10px;
+    background-color:#fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    line-height: 72rpx;
+}
+
+view .question_item:nth-child(odd){
+    background-color: #f1f1f1;
+}
+view .question_item:checked{
+    color:#2db7f5;
+}
+
+/* .question{
+    margin-top: 20rpx;
+    background-color:#fff;
+    padding:10px;
+    border-radius: 10px;
+
+}
+.question .question_title{
+    border-bottom: 1px solid #dbd9d9;
+    padding-bottom:10px;
+} */
+
+
+
+   /* 题  目 */
+.question_list{
+    padding:15px 0;
+    background-color: #fff;
+}
+.question_list_title{
+    font-size:15px;
+}
+.question_style{
+    display:inline-block;
+    height:18px;
+    line-height:18px;
+    padding:0 4px;
+    /* border-radius:2px; */
+    /* background:#fff; */
+    font-size:11px;
+    vertical-align:middle;
+    border:1rpx solid #dddee1;
+    background-color:#2db7f5;
+    /* #51d3c6 */
+    color:#fff;
+}
+.question_name{
+    /* display: flex;
+    
+    font-size: 40rpx; */
+    /* margin-top: 10rpx; */
+    margin-left: 8px;
+    line-height: 25px;
+}
+
+/* 下一题 */
+.select_button{
+    display: flex;
+    justify-content: center;
+}
+/* .select_detail{
+    display: flex;
+    justify-content: center;
+} */
+.pre, .next{
+    background: #2db7f5;
+    border-radius: 50rpx;
+    width: 300rpx;
+    height: 80rpx;
+    font-size: 32rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: auto;
+    margin-top: 100rpx;
+}
+/* .home{
+    width:40%;
+    background-color: #1bd0bd;
+    color: white;
+    border-radius: 50rpx;
+} */
+/* .home_page{
+    display: flex;
+    justify-content: right;
+} */
+
+.css-shadow{
+  -moz-box-shadow:2px 2px 10px #2db7f5; 
+  -webkit-box-shadow:2px 2px 10px #2db7f5; 
+  box-shadow:2px 2px 10px #2db7f5;
+}
+/* 答案解析 */
+/* .analysis{
+    line-height: 60rpx;
+    width: 100%;
+    height: 60rpx;
+    margin-top: 100rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    padding: 20rpx;
+} */

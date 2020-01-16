@@ -1,0 +1,11 @@
+page{
+    height: 100%;
+}
+.bg-gray{
+    background-color: #eee;
+    min-height: 100%;
+}
+.name_input{
+    background-color: #fff;
+    padding:5px;
+}

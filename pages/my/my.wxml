@@ -1,0 +1,163 @@
+<!--index.wxml-->
+<view class="bg-gray">
+    <view class="user-container bg-white">
+    
+        <view class="userinfo">
+            <view class="page-hd-border" catchtap="otherInfo">
+                <view class="page-hd__pic" >
+                    <image src="{{weixinInfo.headUrl}}"/>
+                </view>
+            </view> 
+            <view class="page-hd__name">{{weixinInfo.nickName}}</view>
+                <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image> -->
+                <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+                <!-- <open-data class="userinfo-avatar" wx:if='{{isLogin}}' type="userAvatarUrl" style="border-radius:100%"></open-data>
+                <open-data class="userinfo-nickname" wx:if='{{isLogin}}' type="userNickName"></open-data> -->
+        </view>
+
+    </view>
+
+    <view class="tab-container">
+
+        <view class="tab-items bg-white">
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="goRankList">
+                <image src="../../images/rank.png" mode="aspectFit" class="tab-icon"></image>
+                <text class="tab-text">缘分排行榜</text>
+                <view class="tab-arrow"></view>
+            </view>
+
+             <view class="tab-item" hover-class="tab-item-hover" catchtap="goAboutUs">
+                <image src="../../images/luckyCoin.png" mode="aspectFit" class="tab-icon"></image>
+                <text class="tab-text">关于我们</text>
+                <view class="tab-arrow"></view>
+            </view>
+        </view>
+
+
+        <view class="tab-items bg-white">
+            <view class="tab-title border-bottom" hover-class="tab-item-hover">
+                <image src="../../images/luckyCoin.png" mode="aspectFit" class="tab-icon"></image>
+                <text class="tab-text baseInfo" >我的基本信息</text>
+            </view>
+
+           
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <text class="required">*</text>
+                <text class="tab-text">昵称</text>
+                <input name='input' class="tab-info" type="text"  value="{{name}}" bindblur="bindNameChange"/>
+                <!-- <text class="tab-info" >{{userInfo.nickName}}</text> -->
+                <view class="tab-arrow"></view>
+             </view>
+
+            
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                  <text class="required">*</text>
+                    <text class="tab-text">性别</text>
+                    <picker name="picker" mode="selector" bindchange="bindGenderChange" value="{{genderIndex}}" range="{{array}}">
+                        <view class="tab-info">{{array[genderIndex]}}</view>
+                    </picker>
+                    
+            </view>
+
+             <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="binDateChange">
+                    <text class="required">*</text>
+                    <text class="tab-text">出生年月</text>
+                    <picker name="picker" class="picker" mode="date" bindchange="bindDateChange" value="{{date}}" start="1960-01-01" end="2020-01-01">
+                        <text class="tab-info">{{date}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+            </view>
+
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="required">*</text>
+                    <text class="tab-text">地区</text>
+                    <!-- <text class="tab-info" >{{userInfo.province+" "+userInfo.city}}</text> -->
+                    <!-- <text class="tab-info" >{{region[0]+" "+region[1]}}</text> -->
+                    <picker name="picker" mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <!-- <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]}}</text> -->
+                         <text class="tab-info">{{region[0]+" "+region[1]}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="tab-text"> 微信号</text>
+                     <input name='input' class="tab-info" type="text" value="{{weichat}}" bindblur="bindWeichat"/>
+                <!-- <view class="tab-arrow"></view> -->
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="tab-text"> QQ</text>
+                    <input name='input' class="tab-info" type="text" value="{{qq}}" bindblur="bindQQ" />
+                    <!-- <text class="tab-info" ></text> -->
+                <!-- <view class="tab-arrow"></view> -->
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" style="height:auto">
+                    <text class="tab-text"> 个性签名</text>
+                    <textarea class="textarea-info" maxlength="12" value="{{signature}}" bindblur="bindTextarea"></textarea>
+                    <!-- <text class="tab-info" >{{signature}}</text> -->
+                    <!-- <view class="tab-arrow"></view> -->
+            </view>
+           
+           <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="tab-text"> 期望对方所在省市</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectProvince" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                      <view class="tab-info">{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}</view>
+                    </picker>
+
+                    <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]+" "+region[2]}}</text>
+                         <text class="tab-info" wx:else>{{region[0]+" "+region[1]}}</text>
+                    </picker> -->
+                    <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="tab-text"> 期望对方性别</text>
+                    <!-- <text class="tab-info">{{gender}}</text> -->
+                    <picker name="picker" mode="selector" bindchange="bindExpectGender" value="{{expectGender}}" range="{{array}}">
+                        <view class="tab-info">{{array[expectGender]}}</view>
+                    </picker>
+                    <!-- <open-data class="tab-info" type="userGender" lang="zh_CN">{{userInfo.gender}}</open-data> -->
+                    <!-- <text class="tab-info" wx:if="{{userInfo.gender==1}}">男</text>
+                    <text class="tab-info" wx:else-if="{{userInfo.gender==2}}">女</text>
+                    <text class="tab-info" wx:else>其他</text> -->
+                    <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                    <text class="tab-text"> 期望对方年龄上限</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectUpperAge" value="{{upperIndex}}" range="{{upperAge}}">
+                      <view class="tab-info">{{upperAge[upperIndex]}}</view>
+                    </picker>
+                    <view class="tab-arrow"></view>
+            </view>
+
+            <view class="tab-item" hover-class="tab-item-hover">
+                    <text class="tab-text"> 期望对方年龄下限</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectLowerAge" value="{{lowerIndex}}" range="{{lowerAge}}">
+                      <view class="tab-info">{{lowerAge[lowerIndex]}}</view>
+                    </picker>
+                    <view class="tab-arrow"></view>
+            </view>
+
+             <view class="tab-item" hover-class="tab-item-hover">
+                <text class="tab-text">期待的匹配度下限</text>
+                <input name='input' class="tab-info" type="text" value="{{expectMatch}}" bindblur="bindExpectMatch"/>
+            </view>
+
+            
+        </view>
+                
+    </view>
+
+    <view class="select_button" >
+          <button class="next left" bindtap='btnSubmit'>保存</button>
+          <button class="next right" bindtap='btnGoAnswer'>答题</button>
+    </view>
+
+</view>

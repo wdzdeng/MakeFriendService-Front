@@ -1,0 +1,80 @@
+<!-- <view class="page">
+  <view class="page-container" hover-class="none" hover-stop-propagation="false">
+    <view class="hd" hover-class="none" hover-stop-propagation="false">
+        <text class="hd-title" >排行榜 </text>
+        <text class="hd-aging" >每小时更新一次 </text>
+    </view>
+    
+    <view class="bd" hover-class="none" hover-stop-propagation="false">
+        <scroll-view class='messScroll' scroll-y bindscrolltolower="lower" bindscrolltolower="getBottom">
+            <block class='rankList' wx:for="{{rankList}}" bindtap='showDetail' data-index="{{index}}">
+                <view class="item" hover-class="item-hover" bindtap="goOtherInfo"  hover-stop-propagation="false">
+                    <view class="item-content">
+                        <view>
+                            <image wx:if="{{index==0}}" src="../../images/match1.png" mode="aspectFit" class="tab-icon" ></image>
+                            <image wx:elif="{{index==1}}" src="../../images/match4.png" mode="aspectFit" class="tab-icon" ></image>
+                            <image wx:elif="{{index==2}}" src="../../images/match3.png" mode="aspectFit" class="tab-icon" ></image>
+                            <view wx:else class="tab-icon">{{index+1}}</view>
+                        </view>
+                        <image class="userPhoto" src="{{item.user.avatarUrl}}" />
+                        <view class='name'>{{item.user.nickName}}</view>
+                        <view class='match'>{{item.match}}</view>
+                        <view class="tab-arrow"></view>
+                    </view>
+                </view>
+            </block>
+            <view class="rankList-foot">
+                <text class="rankList-foot-text" >
+                    仅展示前50位排行
+                </text>
+            </view>
+            
+        </scroll-view>
+    </view>
+  </view>
+</view> -->
+
+
+
+
+<view class="page">
+  <view class="page-container" hover-class="none" hover-stop-propagation="false">
+    <view class="hd" hover-class="none" hover-stop-propagation="false">
+        <text class="hd-title" >排行榜 </text>
+        <text class="hd-aging" >每小时更新一次 </text>
+    </view>
+    
+    <view class="bd" hover-class="none" hover-stop-propagation="false">
+       <view wx:if="{{rankList}}">
+            <scroll-view class='messScroll' scroll-y bindscrolltolower="lower" bindscrolltolower="getBottom">
+                <block class='rankList' wx:for="{{rankList}}" bindtap='showDetail' wx:key="{{index}}">
+                    <view class="item" data-index="{{index}}" hover-class="item-hover" bindtap="goOtherInfo">
+                        <view class="item-content">
+                            <view>
+                                <image wx:if="{{index==0}}" src="../../images/match1.png" mode="aspectFit" class="tab-icon" ></image>
+                                <image wx:elif="{{index==1}}" src="../../images/match4.png" mode="aspectFit" class="tab-icon" ></image>
+                                <image wx:elif="{{index==2}}" src="../../images/match3.png" mode="aspectFit" class="tab-icon" ></image>
+                                <view wx:else class="tab-icon">{{index+1}}</view>
+                            </view>
+                            <image class="userPhoto" src="{{item.headUrl}}" />
+                            <view class='name'>{{item.name}}</view>
+                            <view class='match'>{{item.match}}</view>
+                            <view class="tab-arrow"></view>
+                        </view>
+                    </view>
+                </block>
+                <view class="rankList-foot">
+                    <text class="rankList-foot-text" >
+                        仅展示前20位排行
+                    </text>
+                </view>
+                
+            </scroll-view>
+       </view>
+       <view class="noRankList" wx:elif="{{rankList.length==0}}">
+           <!-- <img class="wu" src="../images/"> -->
+           <text class="noRankList-text">没有与你匹配的人</text>
+       </view>
+    </view>
+  </view>
+</view>

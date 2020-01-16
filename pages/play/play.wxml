@@ -1,0 +1,143 @@
+<!--pages/play/play.wxml-->
+<view class="main">
+    <!-- <view class="score_info">
+        <text class="score">得分：{{score}}</text>
+        <navigator class="home_" open-type="navigateBack">
+            <cover-image class="home" src="../../images/home3.png" mode="aspectFit"/> -->
+            <!-- <text class="home">首页</text> -->
+        <!-- </navigator> -->
+        <!-- <text class="time">时间：</text> -->
+    <!-- </view> -->
+    <!-- 题号部分 -->
+    <!-- <view class="title">
+        <text class="title_num" name="题型" > {{current+1}}.{{questionList[current].type}} </text>
+    </view> -->
+
+
+
+    <!-- 问题部分 -->
+    <!-- 判断部分 -->
+    
+        <!-- <view class="question "> -->
+            <!-- 题目 -->
+            <view class="question_list" hover-class="none" hover-stop-propagation="false">
+                <view class="question_list_title">
+                    <!-- <text class="question_style" name="题型" > {{current+1}}.{{questionList[current].type}} </text> -->
+                    <text class="question_style" name="题型" >单选</text>
+                    <text class="question_name">{{questionList[current].question}}</text>
+                </view>
+            </view>
+            <view class="question_list_body">
+              <!-- 四个选项 携带参数变量会自动小写-->
+              <view class="question_item question_item1" bindtap="selectItem" data-selectId="1"  >
+                  <text class="question_item_name">{{questionList[current].item1}}</text>
+                  <radio class="question_select" checked="{{myChecked===1?true:false}}"> </radio>
+              </view>
+              <!-- 选项2 -->
+              <view class="question_item question_item2 " bindtap="selectItem"  data-selectId="2">
+                  <text class="question_item_name">{{questionList[current].item2}}</text>
+                  <radio class="question_select"  checked="{{myChecked===2?true:false}}"> </radio>
+              </view>
+              <!-- 选项3 -->
+              <view class="question_item question_item3"  bindtap="selectItem" data-selectId="3">
+                  <text class="question_item_name">{{questionList[current].item3}}</text>
+                  <radio class="question_select"  checked="{{myChecked===3?true:false}}" > </radio>
+              </view>
+              <!-- 选项4 -->
+              <view class="question_item question_item2" bindtap="selectItem"  data-selectId="4">
+                  <text class="question_item_name" >{{questionList[current].item4}}</text>
+                  <radio class="question_select"  checked="{{myChecked===4?true:false}}"> </radio>
+              </view>
+            </view>
+<!-- 
+            判断部分
+            <block wx:if="{{questionList[current].type_id==1}}">
+                <view class="" hover-class="none" hover-stop-propagation="false">
+                    四个选项 携带参数变量会自动小写
+                    <view class="question_item question_item1" bindtap="selectItem" data-selectId="1"  >
+                        <text class="question_item_name">A、正确</text>
+                        <radio class="question_select" checked="{{myChecked===1?true:false}}"></radio>
+                    </view>
+                    选项2
+                    <view class="question_item question_item2 " bindtap="selectItem"  data-selectId="10">
+                        <text class="question_item_name">B、错误</text>
+                        <radio class="question_select"  checked="{{myChecked===10?true:false}}"> </radio>
+                    </view>
+                </view>
+            </block>
+
+             多选题
+            <block wx:elif="{{questionList[current].type_id==2}}">
+                <view class="question ">
+                    四个选项 携带参数变量会自动小写
+                    <view class="question_item question_item1" bindtap="selectItem" data-selectId="1" data-index="0" >
+                        <text class="question_item_name">{{questionList[current].item1}}</text>
+                        <radio class="question_select" checked="{{multiIndex[0].checked?true:false}}"> </radio>
+                    </view>
+                    选项2
+                    <view class="question_item question_item2 " bindtap="selectItem"  data-selectId="10" data-index="1">
+                        <text class="question_item_name">{{questionList[current].item2}}</text>
+                        <radio class="question_select"  checked="{{multiIndex[1].checked?true:false}}"> </radio>
+                    </view>
+                    选项3
+                    <view class="question_item question_item3"  bindtap="selectItem" data-selectId="100" data-index="2">
+                        <text class="question_item_name">{{questionList[current].item3}}</text>
+                        <radio class="question_select"  checked="{{multiIndex[2].checked?true:false}}" > </radio>
+                    </view>
+                    选项4
+                    <view class="question_item question_item2" bindtap="selectItem"  data-selectId="1000" data-index="3">
+                        <text class="question_item_name">{{questionList[current].item4}}</text>
+                        <radio class="question_select"  checked="{{multiIndex[3].checked?true:false}}"> </radio>
+                    </view>
+                </view>
+            </block> -->
+<!-- 
+            <block wx:for="{{questionList}}">
+                <view>
+                    <view class="question_item question_item1" bindtap="selectItem" data-selectId="1"  >
+                        <text class="question_item_name">{{questionList[current].item1}}</text>
+                        <radio class="question_select" checked="{{myChecked===1?true:false}}"> </radio>
+                    </view>
+                    <view class="question_item question_item2 " bindtap="selectItem"  data-selectId="2">
+                        <text class="question_item_name">{{questionList[current].item2}}</text>
+                        <radio class="question_select"  checked="{{myChecked===2?true:false}}"> </radio>
+                    </view>
+                    <view class="question_item question_item3"  bindtap="selectItem" data-selectId="3">
+                        <text class="question_item_name">{{questionList[current].item3}}</text>
+                        <radio class="question_select"  checked="{{myChecked===3?true:false}}" > </radio>
+                    </view>
+                    <view class="question_item question_item2" bindtap="selectItem"  data-selectId="4">
+                        <text class="question_item_name" >{{questionList[current].item4}}</text>
+                        <radio class="question_select"  checked="{{myChecked===4?true:false}}"> </radio>
+                    </view>
+                </view>
+            </block>  -->
+
+
+
+
+
+
+
+    <!-- 下一题 -->
+    <view class="select_button" >
+        <!-- <view class="select_detail"> -->
+            <block wx:if="{{current==0}}">
+                <!-- <view class="pre" bindtap='pre_question'>
+                    <text class="pre_detail"></text>
+                </view> -->
+            </block>
+            <block wx:else>
+                <view class="pre" bindtap='pre_question'>
+                    <text class="pre_detail">上一题</text>
+                </view>
+            </block>
+            <view class="next" bindtap='next_question'>
+                <text class="next_detail">下一题</text>
+            </view>
+        <!-- </view> -->
+    </view>
+
+</view>
+
+

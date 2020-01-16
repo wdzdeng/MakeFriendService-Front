@@ -1,0 +1,157 @@
+<view class="tab-container bg-gray" >
+  <!-- <form bindsubmit="formSubmit"> -->
+        <view class="tab-items bg-white">
+            <view class="tab-item  border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position tab-item-height ">
+                    <text class="required">*</text>
+                    <text class="tab-text">头像</text>
+                    <image class="tab-info tab-info-photo" wx:if="{{userInfo}}" src="{{headUrl}}" mode="aspectFit"  catchtap="previewImage"></image>
+                    <view class="tab-arrow tab-arrow-photo"></view>
+                </view>
+            </view>
+            
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" hover-class="none">
+                    <text class="required">*</text>
+                    <text class="tab-text">昵称</text>
+                     <input name='input' class="tab-info" type="text"  value="{{nickName}}" bindblur="bindNameChange"/>
+                    <!-- <text class="tab-info" >{{userInfo.nickName}}</text> -->
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+               <view class="tab-item-position" >
+                  <text class="required">*</text>
+                    <text class="tab-text">性别</text>
+                    <!-- <text class="tab-info">{{gender}}</text> -->
+                    <picker name="picker" mode="selector" bindchange="bindGenderChange" value="{{genderIndex}}" range="{{array}}">
+                        <view class="tab-info">{{array[genderIndex]}}</view>
+                    </picker>
+                    <!-- <open-data class="tab-info" type="userGender" lang="zh_CN">{{userInfo.gender}}</open-data> -->
+                    <!-- <text class="tab-info" wx:if="{{userInfo.gender==1}}">男</text>
+                    <text class="tab-info" wx:else-if="{{userInfo.gender==2}}">女</text>
+                    <text class="tab-info" wx:else>其他</text> -->
+                    <!-- <view class="tab-arrow"></view> -->
+               </view>
+            </view>
+
+             <view class="tab-item border-bottom" hover-class="tab-item-hover" catchtap="binDateChange">
+                <view class="tab-item-position">
+                    <text class="required">*</text>
+                    <text class="tab-text">出生年月</text>
+                    <picker name="picker" class="picker" mode="date" bindchange="bindDateChange" value="{{date}}" start="1960-01-01" end="2020-01-01">
+                        <text class="tab-info">{{date}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="required">*</text>
+                    <text class="tab-text">地区</text>
+                    <!-- <text class="tab-info" >{{userInfo.province+" "+userInfo.city}}</text> -->
+                    <!-- <text class="tab-info" >{{region[0]+" "+region[1]}}</text> -->
+                    <picker name="picker" mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <!-- <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]}}</text> -->
+                         <text class="tab-info">{{region[0]+" "+region[1]}}</text>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position">
+                    <text class="tab-text"> 微信号</text>
+                     <input name='input' class="tab-info" type="text" bindblur="bindWeichat"/>
+                </view>
+                <!-- <view class="tab-arrow"></view> -->
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position">
+                    <text class="tab-text"> QQ</text>
+                    <input name='input' class="tab-info" type="text" bindblur="bindQQ" />
+                    <!-- <text class="tab-info" ></text> -->
+                </view>
+                <!-- <view class="tab-arrow"></view> -->
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover" style="height:auto">
+                <view class="tab-item-position" hover-class="none" style="height:auto">
+                    <text class="tab-text"> 个性签名</text>
+                    <textarea class="textarea-info" auto-height maxlength="13" bindblur="bindTextarea"></textarea>
+                    <!-- <text class="tab-info" >{{signature}}</text> -->
+                    <!-- <view class="tab-arrow"></view> -->
+                </view>
+            </view>
+           
+           <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="tab-text"> 期望对方所在省市</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectProvince" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                      <view class="tab-info">{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}</view>
+                    </picker>
+
+                    <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+                         <text class="tab-info" wx:if="{{region[2]}}">{{region[0]+" "+region[1]+" "+region[2]}}</text>
+                         <text class="tab-info" wx:else>{{region[0]+" "+region[1]}}</text>
+                    </picker> -->
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+               <view class="tab-item-position" >
+                    <text class="tab-text"> 期望对方性别</text>
+                    <!-- <text class="tab-info">{{gender}}</text> -->
+                    <picker name="picker" mode="selector" bindchange="bindExpectGender" value="{{expectGender}}" range="{{array}}">
+                        <view class="tab-info">{{array[expectGender]}}</view>
+                    </picker>
+                    <!-- <open-data class="tab-info" type="userGender" lang="zh_CN">{{userInfo.gender}}</open-data> -->
+                    <!-- <text class="tab-info" wx:if="{{userInfo.gender==1}}">男</text>
+                    <text class="tab-info" wx:else-if="{{userInfo.gender==2}}">女</text>
+                    <text class="tab-info" wx:else>其他</text> -->
+                    <view class="tab-arrow"></view>
+               </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="tab-text"> 期望对方年龄上限</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectUpperAge" value="{{upperIndex}}" range="{{upperAge}}">
+                      <view class="tab-info">{{upperAge[upperIndex]}}</view>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
+                <view class="tab-item-position" >
+                    <text class="tab-text"> 期望对方年龄下限</text>
+                    <picker name="picker" mode="multiSelector" bindchange="bindExpectLowerAge" value="{{lowerIndex}}" range="{{lowerAge}}">
+                      <view class="tab-info">{{lowerAge[lowerIndex]}}</view>
+                    </picker>
+                    <view class="tab-arrow"></view>
+                </view>
+            </view>
+
+        </view>
+               
+               
+        <!-- <view class="select_button" >
+          <view class="next" bindtap='btnSubmit'>
+              <text class="next_detail">保存</text>
+          </view>
+        </view> -->
+
+        <view class="select_button" >
+          <button class="next" bindtap='btnSubmit'>保存</button>
+        </view>
+
+      <!-- </form> -->
+    </view>

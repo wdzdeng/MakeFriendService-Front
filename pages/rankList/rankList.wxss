@@ -1,0 +1,122 @@
+/* pages/rankList/index.wxss */
+
+page {
+    height: 100%;
+    /* background: #91e7f6; */
+    /* background: -webkit-gradient(linear, left top, right bottom, from(#2db7f5), to(#77caf0)); */
+  }
+  
+  .page {
+    font-family: 'PingFang SC',
+                   'Helvetica Neue',
+                   Helvetica,
+                   'Droid Sans Fallback',
+                   'Microsoft Yahei',
+                   sans-serif;
+    min-height: 100%;
+    background: -webkit-linear-gradient(left, #2db7f5, #77caf0);
+    /* background: #91e7f6; */
+    /* margin: 15rpx 15rpx 70rpx 15rpx; */
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20rpx;
+  }
+  .page-container{
+    width:90%;
+    margin:0 auto;
+  }
+  .hd{
+    width:100%;
+    padding:50rpx 0 30rpx 0;
+    color:#fff;
+  }
+  .hd-title{
+      font-size: 60rpx;
+      display: block;
+  }
+  .hd-aging{
+      font-size:26rpx;
+  }
+  .bd{
+    
+    background-color: #fff;
+    border-radius: 15rpx;
+    width:100%;
+  }
+  .messScroll {
+    height: 100%;
+    
+    
+  }
+  
+  .item{
+    /* height: 130rpx; */
+    padding: 0 40rpx;
+  }
+  .item-hover {
+    background-color: #e6e6e6;
+  }
+  .item-content {
+      padding:20rpx 0;
+      height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #efefef;
+    position: relative;
+    /* justify-content: space-between; */
+  }
+  .tab-icon {
+	width: 40rpx;
+	height: 40rpx;
+}
+  .userPhoto {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    padding: 0;
+    margin-left:40rpx;
+  }
+  .name{
+    margin-left:40rpx;
+  }
+  .match {
+    text-align: center;
+    /* float: left; */
+    width: 30%;
+    font-size: 33rpx;
+    color: #000;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%) ;
+    right:20rpx;
+  }
+  .tab-arrow {
+	/* display: inline-block; */
+	width: 20rpx;
+	height: 20rpx;
+	border: 1px solid #cdcdcd;
+    /* background-color: #1e1e1e; */
+	border-left: none;
+	border-bottom: none;
+	transform: rotate(45deg);
+	position:absolute;
+	right:0;
+	top:50%;
+	margin-top:-10rpx;
+}
+.rankList-foot{
+    padding:30rpx 0;
+    text-align: center;
+    color:#cdcdcd;
+    font-size:26rpx;
+    line-height: 26rpx;
+}
+  
+.noRankList{
+  padding:100rpx;
+  text-align: center;
+}
+.noRankList-text{
+  color:rgb(179, 177, 177);
+  font-size:33rpx;
+}
