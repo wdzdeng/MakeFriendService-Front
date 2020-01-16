@@ -137,7 +137,7 @@
                     <view class="tab-arrow"></view>
             </view>
 
-            <view class="tab-item" hover-class="tab-item-hover">
+            <view class="tab-item border-bottom" hover-class="tab-item-hover">
                     <text class="tab-text"> 期望对方年龄下限</text>
                     <picker name="picker" mode="multiSelector" bindchange="bindExpectLowerAge" value="{{lowerIndex}}" range="{{lowerAge}}">
                       <view class="tab-info">{{lowerAge[lowerIndex]}}</view>
