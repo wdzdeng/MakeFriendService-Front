@@ -47,7 +47,7 @@
     <view class="bd" hover-class="none" hover-stop-propagation="false">
        <view wx:if="{{rankList}}">
             <scroll-view class='messScroll' scroll-y bindscrolltolower="lower" bindscrolltolower="getBottom">
-                <block class='rankList' wx:for="{{rankList}}" bindtap='showDetail' wx:key="{{index}}">
+                <block class='rankList' wx:for="{{rankList}}" bindtap='showDetail' wx:key="index">
                     <view class="item" data-index="{{index}}" hover-class="item-hover" bindtap="goOtherInfo">
                         <view class="item-content">
                             <view>
@@ -58,7 +58,7 @@
                             </view>
                             <image class="userPhoto" src="{{item.headUrl}}" />
                             <view class='name'>{{item.name}}</view>
-                            <view class='match'>{{item.match}}</view>
+                            <view class='match'>{{item.match}}%</view>
                             <view class="tab-arrow"></view>
                         </view>
                     </view>
