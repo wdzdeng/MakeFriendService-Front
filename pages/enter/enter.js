@@ -4,8 +4,8 @@
 // const uploadFileUrl = require('../../config').uploadFileUrl;
 
 
-// const APP_ID ='wxbc7ad26fc22e64d8';//输入小程序appid  
-// const APP_SECRET ='abd2a7ed9c5dd160a434efa8c6124288';//输入小程序app_secret  
+// const APP_ID =//输入小程序appid  
+// const APP_SECRET =;//输入小程序app_secret  
 // var OPEN_ID=''//储存获取到openid  
 // var SESSION_KEY=''//储存获取到session_key 
 
@@ -285,26 +285,15 @@ const silentLoginUrl = require('../../config').silentLoginUrl;
 const checkInfoIntegrity = require('../../config').checkInfoIntegrity;
 const loginUrl = require('../../config').loginUrl;
 
-// avatarUrl: undefined
-// city: "抚顺市"
-// gender: 2
-// headUrl: "https://wx.qlogo.cn/mmopen/vi_32/MLFkN5riaDqoxic80icfWEO7EictwDPRubPNINXiaMwDslLw7022MEb4SuFicESW9iaE8YmkpVYNjibZfauO4ybJEKqBnA/132"
-// nickName: "君。"
-// openId: "onbGB4uML8CsX7nKF8res0sYI87k"
-// province: "辽宁省"
-// userId: 10006
 
-
-// const APP_ID ='wxbc7ad26fc22e64d8';//输入小程序appid  
-// const APP_SECRET ='abd2a7ed9c5dd160a434efa8c6124288';//输入小程序app_secret  
-// var OPEN_ID=''//储存获取到openid  
-// var SESSION_KEY=''//储存获取到session_key 
 Page({
   data: {
       //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     //   canIUse: wx.canIUse('button.open-type.getUserInfo')
     isHide:true,
-    weixinInfo:null,
+    weixinInfo:null
+    
+
     // userInfo:{
     //     city: "抚顺市",
     //     gender: 2,
@@ -318,6 +307,8 @@ Page({
   onLoad: function () {
     var that = this;
     console.log("enter.load")
+    wx.hideTabBar({         //首先先隐藏tabBar，然后判断是否静默登录，若登录过，显示tabBar
+    })
     that.checkUserInfoPermission();
     // 查看是否授权
    
@@ -365,15 +356,18 @@ Page({
         //     'content-type': 'application/x-www-form-urlencoded'
         // },
         success: function (res) {
-            console.log(res)
-            if(res.data.code==0){
-                if(res.data.data.isSuccess){
+            // console.log(res)
+            if(res.data.code==0){        //接口是可以用的
+                if(res.data.data.isSuccess){         //静默登陆成功
                     // app.globalData.userInfo=res.data.data.data,
                     that.setData({
-                        weixinInfo:res.data.data.data,    //所有信息
+                        weixinInfo:res.data.data.data,    //存储取到的用户信息， res.data为返回信息的数据部分  后两个data为后端存储数据的层级
                         isHide:false
                     })
                     console.log("静默登录成功")
+                    wx.showTabBar({         //登录情况下，显示tabBar
+                      animation:true
+                  })
                 }else{
                     // app.globalData.userInfo=res.data.data.data,
                     that.setData({
@@ -381,11 +375,11 @@ Page({
                     })
                     console.log("静默登录失败,重新登录")
                 }
-                app.globalData.weixinInfo=res.data.data.data,  //如果登录过isSuccess=true：返回所有用户信息，如果没登录过：返回用户openid
-                console.log("app.weixinInfo:",app.globalData.weixinInfo,"isHide:",that.data.isHide)
+                app.globalData.weixinInfo=res.data.data.data  //如果登录过isSuccess=true：返回所有用户信息，如果没登录过：返回用户openid
+                // console.log("app.weixinInfo:",app.globalData.weixinInfo,"isHide:",that.data.isHide)
             }else{
-                console.log("静默登录request成功，code=2，返回msg：",res.data.msg)
-                app.globalData.weixinInfo=res.data.data.data,
+                // console.log("静默登录request成功，code=2，返回msg：",res.data.msg)
+                app.globalData.weixinInfo=res.data.data.data,      //只返回openid？
                 that.setData({
                     isHide:true
                 })
@@ -426,15 +420,23 @@ Page({
               success: function (res) {
                 console.log("登录返回：",res)
                 if(res.data.code==0){
-                    app.globalData.weixinInfo=res.data.data
+                    app.globalData.weixinInfo=res.data.data       //传过来了userId
                     that.setData({
                         isHide:false,
                         weixinInfo:app.globalData.weixinInfo
                     })
-                    console.log("授权登录成功，code=0，app.userInfo:",app.globalData.weixinInfo)
-                    console.log("授权登录成功，code=0，userInfo:",that.data.weixinInfo)
+                    wx.showTabBar({         //登录情况下，显示tabBar
+                      animation:true
+                  })
+                    // console.log("授权登录成功，code=0，app.userInfo:",app.globalData.weixinInfo)
+                    // console.log("授权登录成功，code=0，userInfo:",that.data.weixinInfo)
                 }else{
                     console.log("授权登录，code=1",res.data.msg)
+                    wx.showToast({
+                      title: "啊啊后台出bug啦,请稍后再试一下哦",
+                      icon: 'none',
+                      duration: 1000,
+                    })
                 }
               },
               fail:function(res){
@@ -463,6 +465,7 @@ Page({
   },
   
   goAnswer:function() {
+    let that=this;
     wx.request({
       url:checkInfoIntegrity,     //进入答题前校验，如果填写过信息，去答题；否则去填写信息
       data:{
@@ -470,47 +473,52 @@ Page({
       },
       method:"GET",
       success:function(RequstRes){
-        console.log(RequstRes)
-        if(RequstRes.data.code==0){
+        console.log("答题前校验返回的信息：",RequstRes)
+        if(RequstRes.data.code==0){  //填写过信息，转答题
           wx.navigateTo({
-            url: '../play/play'   //填写过信息，转答题
+            url: '../play/play'   
           })
-        }else{
-            wx.showToast({
-              title: '请填写个人信息',
-              icon: 'loading',
-              duration: 1000
-            })
-            wx.switchTab({
-              url: '../my/my'     //没有填写过信息，转去填写信息
-            })
-          }
+        }else if(RequstRes.data.code==-1){   //没有填写过信息，或已经完成答题
+          that.showAndGoMyTab(RequstRes.data.msg)
+        }
       },
       fail:function(res){
         console.log(res.errMsg)
       }
     })
-    
+  },
+  showAndGoMyTab: function(message){
+    wx.showToast({
+      title: message,
+      icon: 'none',
+      duration: 1000,
+      success:()=>{
+        setTimeout(()=>{
+          wx.switchTab({
+            url: '../my/my'     
+          })
+        },1000)
+      }
+    })
   },
   onShow: function() {
-        // console.log("onshow前：globalData.userInfo：",app.globalData.userInfo)
-        // console.log("onshow前：userInfo：",this.userInfo)
         let that = this;
         this.setData({
           weixinInfo: app.globalData.weixinInfo
         });
-        // console.log("onshow后：globalData.userInfo：",app.globalData.userInfo)
-        // console.log("onshow后：userInfo：",this.userInfo)
-        let isHide = that.isHide
+       
+        
+ /*     let isHide = that.data.isHide
         if(!isHide){
-            wx.showTabBar({
+            wx.showTabBar({         //登录情况下，显示tabBar
                 animation:true
             })
         }else{
-            wx.hideTabBar({
-                // animation:false
+            wx.hideTabBar({         //没有授权情况下，隐藏tabBar
             })
-        }
+            
+        }     
+*/           //  在data中设置的isHide为true，所以这里一直为true，如果想用判断的方法，用内置的缓存机制缓存isHide
     }
   
 })

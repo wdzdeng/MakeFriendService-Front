@@ -16,8 +16,6 @@
 
 
     <!-- 问题部分 -->
-    <!-- 判断部分 -->
-    
         <!-- <view class="question "> -->
             <!-- 题目 -->
             <view class="question_list" hover-class="none" hover-stop-propagation="false">
@@ -121,21 +119,20 @@
 
     <!-- 下一题 -->
     <view class="select_button" >
-        <!-- <view class="select_detail"> -->
-            <block wx:if="{{current==0}}">
-                <!-- <view class="pre" bindtap='pre_question'>
-                    <text class="pre_detail"></text>
-                </view> -->
-            </block>
-            <block wx:else>
-                <view class="pre" bindtap='pre_question'>
-                    <text class="pre_detail">上一题</text>
-                </view>
-            </block>
-            <view class="next" bindtap='next_question'>
+        <view wx:if="{{current!==0}}" class="pre" bindtap='pre_question'>
+            <text class="pre_detail">上一题</text>
+        </view>
+        <block wx:if="{{current!==(qusLength-1)}}">
+             <view class="next" bindtap='next_question'>
                 <text class="next_detail">下一题</text>
             </view>
-        <!-- </view> -->
+        </block>
+        <block wx:else>
+            <view class="next" bindtap='submit_question'>
+                <text class="next_detail">提交</text>
+            </view>
+        </block>
+
     </view>
 
 </view>

@@ -323,8 +323,11 @@ App({
   globalData:{
     weixinInfo:null,
     userInfo: null,
-    rankList:{},   // 排行榜
+    rankList:[],   // 排行榜
     otherIndex:0,    //排行榜第几个人的索引
-    otherInfo:{}
+    otherInfo:[],
+
+    // noInfoMessage:'请先填写个人信息',             //答题前提示框信息
+    // finishAnswerMessage:'已完成答题，去看缘分榜喽~',
   }
 })

@@ -1,5 +1,5 @@
 // pages/play/play.js
-var questionData = require("../../questionData/questionData.js");
+const questionData = require("../../questionData/questionData.js");
 
 // const postAnswerResult = require('../../config').postAnswerResult;
 const app = getApp();
@@ -10,29 +10,37 @@ Page({
   data: {
     //他人的信息
     otherInfo:{},
-    rankOtherInfo:{},  //主要获得头像和答题匹配结果 （获得用户信息没有头像）
-    otherInfo:{},  //获取用户的所有信息，已在上个界面存入全局变量
+    rankOtherInfo:{},  //从排行榜接口获取的用户数据，主要获得头像和答题匹配结果 （获取用户信息接口返回的数据中没有头像）
+    otherInfo:{},  //获取用户信息接口返回的数据，已在上个界面存入全局变量
 
-    answerList:[],
-    trueAnswerList:[],
+    //答案列表
+    answerList:[],   //后台传过来的答案匹配列表是‘12342312’，
+    trueAnswerList:[],   //转换为‘ABCDBCAB’的答案列表
     // ta:'',
 
     // 题目
      current:0,//当前题号
-     qusLength:0,
+     qusLength:0,  //题的长度，为了判断上(下)一题的按钮是否显示
      questionList:[], //题的列表
 
   },
 
-  
+  //预览头像
+  previewImage:function(){
+    let myheadUrl = this.data.rankOtherInfo.headUrl;
+    let imglist =[];
+    imglist.push(myheadUrl)
+    wx.previewImage({
+        current: myheadUrl,                   // 当前显示图片的http链接
+        urls: imglist,                        // 需要预览的图片http链接列表
+    })
+  },
 
-
-  // 题目
+  // 上(下)一题的按钮
   next_question(){
       this.setData({
         current: this.data.current + 1,
       })
-
   },
   pre_question(){
     this.setData({
@@ -42,30 +50,29 @@ Page({
 
   //从后台传来的答案匹配结果是‘12342312’，转换为‘ABCDBCAB’
   changeAnswerList: function(){
-    var trueAnswer=[]
-    for(var i=0; i<this.data.answerList.length; i++){
-      if(this.data.answerList[i]=='1'){
+    let trueAnswer=[];
+    let answerList=this.data.answerList;
+    answerList.forEach( (val)=>{
+      if( val == '1'){
         trueAnswer.push("A")
-      }else if(this.data.answerList[i]=='2'){
+      }else if(val=='2'){
         trueAnswer.push("B")
-      }else if(this.data.answerList[i]=='3'){
+      }else if(val=='3'){
         trueAnswer.push("C")
-      }else if(this.data.answerList[i]=='4'){
+      }else if(val=='4'){
         trueAnswer.push("D")
       }
-    }
+    })
     this.setData({
       trueAnswerList:trueAnswer
     })
   },
-
  
   onLoad: function () {
-    // 得到题目
-    this.setData({
+    this.setData({               // 得到题目列表、题目个数
       questionList:questionData.questionList,
-      qusLength:this.data.questionList.length
-    });
+      qusLength:questionData.questionList.length
+    })
   },
   onShow:function(){
     // let that = this
@@ -90,9 +97,10 @@ Page({
     // })
     this.setData({
       otherInfo:app.globalData.otherInfo,
-      rankOtherInfo:app.globalData.rankList[otherIndex],   //得到从排行榜接口得到的信息（目的是为了渲染头像）
-      answerList:app.globalData.rankList[otherIndex].answerCompare.split('')    //得到从排行榜接口得到的信息（目的是为了得到匹配度）
+      rankOtherInfo:app.globalData.rankList[otherIndex],   //从排行榜接口获取用户信息 （主要是为了得到头像）
+      answerList:app.globalData.rankList[otherIndex].answerCompare.split('')    //从排行榜接口中获得的答案匹配列表
     })
+    console.log("answerCompare:",app.globalData.rankList[otherIndex].answerCompare)
     this.changeAnswerList()
     // if(that.data.otherInfo.gender==1){
     //   that.setData({

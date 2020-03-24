@@ -117,15 +117,11 @@ view .question_item:checked{
     line-height: 25px;
 }
 
-/* 下一题 */
+/* 上下一题按钮 */
 .select_button{
     display: flex;
     justify-content: center;
 }
-/* .select_detail{
-    display: flex;
-    justify-content: center;
-} */
 .pre, .next{
     background: #2db7f5;
     border-radius: 50rpx;
